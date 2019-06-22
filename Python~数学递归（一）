@@ -1,0 +1,9 @@
+#求n！当n为0的时候，值为1；当n为非0的时候，n*（n-1）！
+def fact(n):
+    if n == 0:
+        return 1
+    else:
+        return n*fact(n-1)
+
+#调用函数，测试结果
+print(fact(10))
