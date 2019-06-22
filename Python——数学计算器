@@ -1,0 +1,13 @@
+#由温度转换同理可以推出货币转换 RMB<----->USD
+while True:
+    money = input("请输入想要转换的金额，并以金额符号结束：")
+    if money[-3:] == "RMB":
+        USD = eval(money[:-3]) / 6.8
+        print("转换后的金额为{:.2f}USD".format(USD))
+    elif money[-3:] == "USD":
+        RMB = eval(money[:-3]) * 6.8
+        print("转换后的金额为{:.2f}RMB".format(RMB))
+    else:
+        print("输入有误，请重新输入")
+    if money == "":
+        break
