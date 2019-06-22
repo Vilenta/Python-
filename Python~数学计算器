@@ -1,0 +1,47 @@
+#已知现有的温度有华氏度和摄氏度，如何进行温度数值转换呢？
+# C = (F-32)/1.8   F = 1.8 * C + 32
+
+#为了确保输入的数值正确，我们定义在数值后面加上温度符号C/F
+#为了实现重复输入，加入循环
+while True:
+    tempture = input("请输入带符号的温度数值：")
+    if tempture[-1] == "F":
+        C = (eval(tempture[0:-1]) - 32 ) / 1.8
+        print("转换温度后的数值为：{:.2f}C".format(C))
+    elif tempture[-1] == "C":
+        F = 1.8 * eval(tempture[0:-1]) + 32
+        print("转换温度后的数值为：{:.2f}F".format(F))
+    else:
+        print("输入格式错误，请重新输入")
+    if tempture == "":
+        break
+
+
+#举一反三：如果我想实现大小写都可以通用输入，怎么办
+#只需要在判断的地方稍作修改
+while True:
+    tempture = input("请输入带符号的温度数值：")
+    if tempture[-1] == "F" or "f":
+        C = (eval(tempture[0:-1]) - 32 ) / 1.8
+        print("转换温度后的数值为：{:.2f}C".format(C))
+    elif tempture[-1] == "C" or "c":
+        F = 1.8 * eval(tempture[0:-1]) + 32
+        print("转换温度后的数值为：{:.2f}F".format(F))
+    else:
+        print("输入格式错误，请重新输入")
+    if tempture == "":
+        break
+
+#举一反三②：如果温度符号在最开头，程序该怎么实现
+while True:
+    tempture = input("请输入带符号的温度数值：")
+    if tempture[0] in ["F","f"]:
+        C = (eval(tempture[1:]) - 32 ) / 1.8
+        print("转换温度后的数值为：{:.2f}C".format(C))
+    elif tempture[0] in ["C","c"]:
+        F = 1.8 * eval(tempture[1:]) + 32
+        print("转换温度后的数值为：{:.2f}F".format(F))
+    else:
+        print("输入格式错误，请重新输入")
+    if tempture == "":
+        break
