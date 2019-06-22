@@ -1,0 +1,24 @@
+#用蒙特卡洛方法，随机数撒点计算pi的数值
+#当撒点数量为10000时
+from random import random
+DARTS = 10000
+hits = 0
+for i in range(1,DARTS+1):
+    x,y = random(),random()
+    dist = pow(x**2 + y**2 ,0.5)
+    if dist <= 1:
+        hits = hits + 1
+pi = 4 * (hits / DARTS)
+print("V1圆周率的值为：{}".format(pi))
+
+#当撒点数量为1000*1000时
+from random import random
+DARTS = 1000*1000
+hits = 0
+for i in range(1,DARTS+1):
+    x,y = random(),random()
+    dist = pow(x**2 + y**2 ,0.5)
+    if dist <= 1:
+        hits = hits + 1
+pi = 4 * (hits / DARTS)
+print("V2圆周率的值为：{}".format(pi))
