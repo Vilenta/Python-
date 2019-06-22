@@ -1,0 +1,12 @@
+#半圆的方程：（x-2）²+ (y-2)² = 4且y<=2
+#斜线方程：2y = x
+import random
+DARTS = 1000000
+hits = 0
+area = 2*4
+for i in range(1,DARTS+1):
+    x,y = random.uniform(0,4),random.uniform(0,2)
+    if 2*y<x and (pow(x-2,2)+pow(y-2,2))> 4:
+        hits += 1
+    S = (hits / DARTS)*area
+print("阴影部分面积为{}".format(S))
