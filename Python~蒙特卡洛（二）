@@ -1,0 +1,11 @@
+#计算任意区间内的阴影面积，随着散点数量增加，答案越接近
+import random
+DARTS = 10000
+hits = 0
+area = 2 * 8
+for i in range(1,DARTS+1):
+    x,y = random.uniform(0,2),random.uniform(0,8)
+    if y < pow(x,3):
+        hits += 1
+    S = (hits/DARTS)*area
+print("阴影部分的面积为{}".format(S))
