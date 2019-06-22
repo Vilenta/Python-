@@ -1,0 +1,72 @@
+#每天努力1%，365天后会有怎样惊人的效果
+dayup = 1.0
+dayfactor = 0.01
+for i in range(365):
+    dayup = dayup * (1 + dayfactor)
+print("每天努力1%，收获是{:.2f}倍".format(dayup))
+
+#每天退步1%，365天的结果又是怎样
+dayup = 1.0
+dayfactor = 0.01
+for i in range(365):
+    dayup = dayup *(1 - dayfactor)
+print("每天退步1%，收获是{:.2f}倍".format(dayup))
+
+#如果工作日进步1%，休息日退步1%，365天后的效果会怎样
+dayup = 1.0
+dayfactor = 0.01
+for i in range(365):
+    if i % 7 in [0,6]:
+        dayup = dayup * (1 - dayfactor)
+    else:
+        dayup = dayup * (1 + dayfactor)
+print("工作日进步1%，休息日退步1%，收获是{:.2f}倍".format(dayup))
+
+#如果工作日进步1%，休息日不退步，365天的区别大吗
+dayup = 1.0
+dayfactor = 0.01
+for i in range(365):
+    if i & 7 in [0,6]:
+        continue
+    else:
+        dayup = dayup * (1 + dayfactor)
+print("工作日进步1%，休息日不退步，收获是{:.2f}倍".format(dayup))
+
+#举一反三①：
+# 如果甲365天每天都进步1%，乙只想工作日进步，休息日不退步，那乙工作日需要进步百分之多少才追得上甲？
+def DayUP(df):
+    dayup = 1.0
+    for i in range(365):
+        if i % 7 in [0,6]:
+            continue
+        else:
+            dayup = dayup * (1 + df)
+    return dayup
+dayfactor = 0.01
+while DayUP(dayfactor) < 37.78:
+    dayfactor += 0.001
+print("乙工作日需要进步{:.3f}%倍，并且休息日不退步，才能追的上甲".format(dayfactor*100))
+
+#举一反三②
+# 如果甲365天每天都进步1%，乙想工作日进步，休息日退步1%，那乙工作日需要进步百分之多少才追得上甲？
+def DayDayUP(df):
+    dayup = 1.0
+    for i in range(365):
+        if i % 7 in [0,6]:
+            dayup = dayup * (1 - 0.01)
+        else:
+            dayup = dayup * (1 + df)
+    return dayup
+dayfactor = 0.01
+while DayDayUP(dayfactor) < 37.78:
+    dayfactor += 0.001
+print("乙工作需要进步{:.3f}%倍，并且休息日退步1%，才能追的上甲".format(dayfactor*100))
+
+#举一反三③
+#如果甲把乙每天进步的数据当作自己每天进步的数据，那么365天后会有多大的变化？
+dayfactor = 0.019
+dayup = 1.0
+for i in range(365):
+    dayup = dayup * (1 + dayfactor)
+print("甲每天进步1.9%，收获是{:.2f}倍".format(dayup))
+#发现：每天进步1% 和每天进步1.9% 有天壤之别，这就是天天向上的力量
